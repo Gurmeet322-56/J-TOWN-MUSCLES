@@ -9,24 +9,41 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #000;
-    color: #fff;
+    background: black;
+    color: white;
 }
 
 /* HERO */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-    url('https://images.unsplash.com/photo-1558611848-73f7eb4001ab') center/cover;
-    height: 90vh;
+    position: relative;
+    height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-align: center;
+    overflow: hidden;
 }
-
-.hero h1 { font-size: 42px; }
+.hero video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+.hero-content {
+    z-index: 1;
+}
+.hero h1 { font-size: 45px; }
 .hero h2 { color: red; }
 
+/* BUTTON */
 .btn {
     padding: 15px 25px;
     background: red;
@@ -42,12 +59,12 @@ body {
     text-align: center;
 }
 
+/* CARDS */
 .cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-
 .card {
     border: 1px solid red;
     margin: 10px;
@@ -55,16 +72,40 @@ body {
     max-width: 250px;
 }
 
+/* CAROUSEL */
+.carousel {
+    overflow: hidden;
+}
+.carousel-track {
+    display: flex;
+    animation: scroll 15s linear infinite;
+}
+.carousel img {
+    width: 300px;
+    margin: 10px;
+    border-radius: 10px;
+}
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
 /* FORM */
 form {
     max-width: 300px;
     margin: auto;
 }
-
 input, select {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
+}
+
+/* MAP */
+.map iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
 }
 
 /* STICKY BUTTON */
@@ -84,21 +125,50 @@ input, select {
 
 <!-- HERO -->
 <section class="hero">
-    <div>
+    <video autoplay muted loop>
+        <source src="https://cdn.coverr.co/videos/coverr-working-out-in-the-gym-5176/1080p.mp4">
+    </video>
+
+    <div class="hero-content">
         <h1>JIND GYM</h1>
         <h2>🔥 First Month ₹800 Only 🔥</h2>
-        <p>Limited Seats • Transform Fast</p>
+        <p>Start Your Fitness Journey Today</p>
         <a class="btn" href="#form">Join Now</a>
     </div>
 </section>
 
 <!-- WHY -->
 <section class="section">
-    <h2>Why Choose Us?</h2>
+    <h2>Why Join JIND GYM?</h2>
     <div class="cards">
-        <div class="card">💪 Personal Training</div>
-        <div class="card">🔥 Fat Loss Experts</div>
-        <div class="card">🏋️ Muscle Gain Plans</div>
+        <div class="card">💪 Personal Attention</div>
+        <div class="card">🔥 Beginner Friendly</div>
+        <div class="card">🏋️ Result Oriented Training</div>
+    </div>
+</section>
+
+<!-- TRUST -->
+<section class="section">
+    <h2>Why People Are Joining Us</h2>
+    <div class="cards">
+        <div class="card">🔥 Limited Offer ₹800/month</div>
+        <div class="card">💪 Friendly Environment</div>
+        <div class="card">⚡ Fast Visible Results</div>
+    </div>
+</section>
+
+<!-- CAROUSEL -->
+<section class="section">
+    <h2>Gym Vibes</h2>
+    <div class="carousel">
+        <div class="carousel-track">
+            <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e">
+            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438">
+            <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e">
+            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438">
+        </div>
     </div>
 </section>
 
@@ -116,37 +186,34 @@ input, select {
             <option>General Fitness</option>
         </select>
 
-        <button class="btn" type="submit">Submit</button>
+        <button class="btn">Submit</button>
     </form>
 </section>
 
-<!-- TESTIMONIAL -->
-<section class="section">
-    <h2>Client Results</h2>
-    <p>“Lost 10kg in 3 months” ⭐⭐⭐⭐⭐</p>
-    <p>“Best gym in area” ⭐⭐⭐⭐⭐</p>
+<!-- MAP -->
+<section class="section map">
+    <h2>Find Us</h2>
+    <iframe src="https://maps.google.com/maps?q=India&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
 </section>
 
 <!-- CTA -->
 <section class="section">
-    <h2>Only Few Slots Left</h2>
+    <h2>Limited Slots Available</h2>
     <a class="btn" href="https://wa.me/919518804495">Join Now</a>
 </section>
 
-<!-- STICKY WHATSAPP -->
+<!-- STICKY -->
 <a class="sticky-btn" href="https://wa.me/919518804495">💬</a>
 
 <script>
 function sendToWhatsApp(e) {
     e.preventDefault();
-
     let name = document.getElementById("name").value;
     let phone = document.getElementById("phone").value;
     let goal = document.getElementById("goal").value;
 
-    let message = `Name: ${name}%0APhone: ${phone}%0AGoal: ${goal}`;
-
-    window.open(`https://wa.me/919518804495?text=${message}`, "_blank");
+    let msg = `Name: ${name}%0APhone: ${phone}%0AGoal: ${goal}`;
+    window.open(`https://wa.me/919518804495?text=${msg}`);
 }
 </script>
 
