@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JIND GYM</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+    url('https://images.unsplash.com/photo-1558611848-73f7eb4001ab') center/cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 { font-size: 42px; }
+.hero h2 { color: red; }
+
+.btn {
+    padding: 15px 25px;
+    background: red;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+/* SECTION */
+.section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    border: 1px solid red;
+    margin: 10px;
+    padding: 20px;
+    max-width: 250px;
+}
+
+/* FORM */
+form {
+    max-width: 300px;
+    margin: auto;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* STICKY BUTTON */
+.sticky-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: green;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1>JIND GYM</h1>
+        <h2>🔥 First Month ₹800 Only 🔥</h2>
+        <p>Limited Seats • Transform Fast</p>
+        <a class="btn" href="#form">Join Now</a>
+    </div>
+</section>
+
+<!-- WHY -->
+<section class="section">
+    <h2>Why Choose Us?</h2>
+    <div class="cards">
+        <div class="card">💪 Personal Training</div>
+        <div class="card">🔥 Fat Loss Experts</div>
+        <div class="card">🏋️ Muscle Gain Plans</div>
+    </div>
+</section>
+
+<!-- FORM -->
+<section class="section" id="form">
+    <h2>Get Free Consultation</h2>
+
+    <form onsubmit="sendToWhatsApp(event)">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+
+        <select id="goal">
+            <option>Fat Loss</option>
+            <option>Muscle Gain</option>
+            <option>General Fitness</option>
+        </select>
+
+        <button class="btn" type="submit">Submit</button>
+    </form>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="section">
+    <h2>Client Results</h2>
+    <p>“Lost 10kg in 3 months” ⭐⭐⭐⭐⭐</p>
+    <p>“Best gym in area” ⭐⭐⭐⭐⭐</p>
+</section>
+
+<!-- CTA -->
+<section class="section">
+    <h2>Only Few Slots Left</h2>
+    <a class="btn" href="https://wa.me/919518804495">Join Now</a>
+</section>
+
+<!-- STICKY WHATSAPP -->
+<a class="sticky-btn" href="https://wa.me/919518804495">💬</a>
+
+<script>
+function sendToWhatsApp(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let goal = document.getElementById("goal").value;
+
+    let message = `Name: ${name}%0APhone: ${phone}%0AGoal: ${goal}`;
+
+    window.open(`https://wa.me/919518804495?text=${message}`, "_blank");
+}
+</script>
+
+</body>
+</html>
